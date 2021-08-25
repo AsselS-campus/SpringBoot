@@ -52,8 +52,8 @@ public class PersonnageController {
     }
 
     //PUT
-    @RequestMapping(value= "/personnage", method = RequestMethod.PUT )
-    public boolean update(@RequestBody Personnage personnage){
+    @RequestMapping(value= "/personnages/{id}", method = RequestMethod.PUT )
+    public boolean update(@PathVariable int id,@RequestBody Personnage personnage){
         return personnageDao.PersonnageUpdate(personnage);
     }
 }
