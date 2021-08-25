@@ -1,25 +1,35 @@
 package com.example.demo.model;//package com.example.demo.model;
 
 public class Personnage {
-    // private int id;
+
+    private int id;
     private String nom;
     private int hp; //hint point
+    private String type;
 
+    public String getType() {
+        return type;
+    }
 
-    public Personnage(String nom, int hp) {
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Personnage(int id, String nom, int hp, String type) {
+        this.id = id;
         this.nom = nom;
-        //this.id=id;
         this.hp = hp;
+        this.type=type;
     }
 
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNom() {
         return nom;
@@ -40,11 +50,11 @@ public class Personnage {
 
     @Override
     public String toString() {
-        return "Product{" +
-                //"id=" + id +
+        return "Personnage{" +
+                "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", hp=" + hp +
+                ", type='" + type + '\'' +
                 '}';
     }
-
 }
