@@ -17,9 +17,9 @@ import java.util.Optional;
 public class PersonnageDaoImpl implements PersonnageDao {
     public static List<Personnage>personnages=new ArrayList<>();
     static {
-        personnages.add(new Personnage(1,"Jason", 110, "guerrier"));
-        personnages.add(new Personnage(2,"Mike", 200, "guerier"));
-        personnages.add(new Personnage(3,"Florian", 300, "magicien"));
+        personnages.add(new Personnage(1,"Jason", 110, Personnage.PersonnageType.GUERRIER));
+        personnages.add(new Personnage(2,"Mike", 200,  Personnage.PersonnageType.GUERRIER));
+        personnages.add(new Personnage(3,"Florian", 300,  Personnage.PersonnageType.MAGE));
 
     }
 
