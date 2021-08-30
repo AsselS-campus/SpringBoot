@@ -1,21 +1,26 @@
 package com.example.demo.model;//package com.example.demo.model;
 
 public class Personnage {
+    public enum PersonnageType {
+        GUERRIER,
+        MAGE,
+        VOLEUR
+    }
 
     private int id;
     private String nom;
     private int hp; //hint point
-    private String type;
+    private PersonnageType type;
 
-    public String getType() {
+    public PersonnageType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(PersonnageType type) {
         this.type = type;
     }
 
-    public Personnage(int id, String nom, int hp, String type) {
+    public Personnage(int id, String nom, int hp, PersonnageType type) {
         this.id = id;
         this.nom = nom;
         this.hp = hp;
