@@ -1,15 +1,13 @@
-package com.example.demo.model;//package com.example.demo.model;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
+package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity//This tells Hibernate to make a table out of this class
-//@JasonFilter("monFiltreDynamique)
-public class Personnage {
+@Entity
+//Création du modèle Entity
+//Cela dit à Hibernate de créer une table à partir de cette classe
 
+public class Personnage {
 
     public enum PersonnageType {
         GUERRIER,
@@ -17,6 +15,7 @@ public class Personnage {
         VOLEUR
     }
 
+ //Ces annotations permettent pour que l'id soit identifié en tant que clé unique auto-générée
     @Id
     @GeneratedValue
     private Integer id;

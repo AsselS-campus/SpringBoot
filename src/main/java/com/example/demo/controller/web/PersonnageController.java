@@ -1,23 +1,10 @@
 package com.example.demo.controller.web;
-
 import com.example.demo.dao.PersonnageDao;
-//import com.example.demo.dao.PersonnageDaoImpl;
 import com.example.demo.model.Personnage;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
-//l'annotation @Controller de Spring qui permet de désigner une classe comme contrôleur, lui conférant la capacité de traiter les requêtes de type GET, POST, etc.
-//@RestController est simplement la combinaison des deux annotations précédentes. Une fois ajouté, il indique que cette classe va pouvoir traiter les requêtes que nous allons définir. Il indique aussi que chaque méthode va renvoyer directement la réponse JSON à l'utilisateur, donc pas de vue dans le circuit.
+import java.util.*;
 
 @EnableSwagger2
 @RestController
@@ -27,32 +14,33 @@ public class PersonnageController {
     @Autowired
     private PersonnageDao personnageDao;
 
-    //Récupérer la liste des personnages
-    //GET
+
+    //GET.Récupérer la liste des personnages
     @RequestMapping(value = "/personnages", method = RequestMethod.GET)
     //Dans ce code,  c'est l'annotation @RequestMapping  qui permet de faire le lien entre l'URI "/Personnages", invoquée via GET, et la méthode listePersonnages .
     public List<Personnage> listePersonnages() {
         return personnageDao.findAll();
     }
-//    public List<Personnage> listePersonnages() {
-//        return personnageDao.findAll();
-//    }
 
-//    //GET
-//    //Récupérer un personnage par son id
-//    @GetMapping(value = "/personnages/{id}")
-//    public Personnage afficherUnPersonnage(@PathVariable int id) {
-//        return personnageDao.findById(id);
-//    }
-//
+      //GET.Récupérer un personnage par son id
+    @GetMapping(value = "/personnages/{id}")
+    public Optional<Personnage> afficherUnPersonnage(@PathVariable Integer id) {
+        return personnageDao.findById(id);
+    }
+
     //POST.Ajouter un personnage
     @PostMapping(value="/personnages")
     public void ajouterPersonnage(@RequestBody Personnage personnage){
         personnageDao.save(personnage);
     }
 
-    //DELETE
-    //Remove un personnage par son id
+    //Modifier un personnage
+    @PutMapping(value="/personnages")
+    public void modifierPersonnage(@RequestBody Personnage personnage){
+        personnageDao.save(personnage);
+    }
+
+    //DELETE.Remove un personnage par son id
     @RequestMapping(value="/personnages/{id}",method = RequestMethod.DELETE)
     public void removeUnPersonnage(@PathVariable Integer id) {
          personnageDao.deleteById(id);
